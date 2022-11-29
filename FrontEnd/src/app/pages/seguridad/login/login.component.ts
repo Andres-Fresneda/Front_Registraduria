@@ -12,6 +12,7 @@ import { SeguridadService } from '../../../servicios/seguridad.service';
 export class LoginComponent implements OnInit {
   correo: string = "";
   contrasena: string = "";
+  seudonimo: string = "";
   constructor(private miServicioSeguridad: SeguridadService,
     private router: Router) { }
 
@@ -29,11 +30,12 @@ export class LoginComponent implements OnInit {
     console.log("aqui" + this.correo + " contraseña " + this.contrasena)
     let elUsuario: Usuarios = {
       correo: this.correo,
-      contrasena: this.contrasena
+      contrasena: this.contrasena,
+      seudonimo: this.seudonimo
     }
     this.miServicioSeguridad.login(elUsuario).subscribe(
       data => {
-        this.router.navigate(['pages/dashboard']);
+        this.router.navigate(['pages/mesas/listar']);
         this.miServicioSeguridad.guardarDatosSesion(data);
       },
       error => {

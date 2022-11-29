@@ -17,6 +17,11 @@ const routes: Routes = [{
       
     },
     {
+      path: 'mesas',
+      loadChildren:() => import('./mesas/mesas.module')
+      .then(m => m.MesasModule),
+    },
+    {
       path: 'dashboard',
       component: ECommerceComponent,
     },
